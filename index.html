@@ -150,6 +150,8 @@ var PIECES = [
    summary:"An Indian Super League match preview covering recent form, head-to-head, attack and defence stats, and a predicted winner."},
   {id:"bengal-election",title:"Bengal Election",cat:"Politics",
    summary:"What could decide the 2021 West Bengal race: the main issues, the 2016 result and what the opinion polls said."},
+  {id:"dollar-part-1",title:"The Rise and the Impending Fall of the Dollar, Part 1: The Rise",cat:"Politics",date:"4 April 2023",
+   summary:"How World War II, the gold standard and the Bretton Woods agreement made the US dollar the world's reserve currency."},
   {id:"tirupati-by-election",title:"Tirupati By-Election",cat:"Politics",
    summary:"Who is standing, how the seat voted in 2019 and why both main parties picked the candidates they did."},
   {id:"portugal-presidential-election",title:"Portugal Presidential Elections 2021",cat:"Politics",
@@ -163,7 +165,7 @@ var CATS=["All","Sports","Politics","TV"];
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function card(p){
   var a=el("a","piece");a.href="#"+p.id;
-  a.appendChild(el("div","meta",p.cat));
+  a.appendChild(el("div","meta",p.cat+(p.date?" · "+p.date:"")));
   a.appendChild(el("h3",null,p.title));
   a.appendChild(el("p",null,p.summary));
   return a;
@@ -189,7 +191,7 @@ function route(){
   PIECES.forEach(function(p){if(p.id===h)piece=p});
   if(piece){
     view="piece";
-    document.getElementById("p-meta").textContent=piece.cat;
+    document.getElementById("p-meta").textContent=piece.cat+(piece.date?" · "+piece.date:"");
     document.getElementById("p-title").textContent=piece.title;
     document.title=piece.title+" — Amith Shinde";
     load(piece);
